@@ -1,7 +1,6 @@
 package Entite;
 
 public class Lion extends Animaux {
-private String deplacement;
     public Lion(String nom, String type, Double age, String sexe , String deplacement) {
         super(nom, type, age, sexe , deplacement);
 
@@ -12,7 +11,7 @@ private String deplacement;
         System.out.println("Régime alimentaire : " + getType());
         System.out.println("Âge : " + getAge() + " ans");
         System.out.println("Sexe : " + getSexe());
-        System.out.println("Mode de déplacement : " + deplacement);
+        System.out.println("Mode de déplacement : " + getDeplacement());
 
         System.out.println("   \\|\\||\n" +
                 "  -' ||||/\n" +
