@@ -35,7 +35,7 @@ public class Main {
 
     private static void initialiserAnimaux() {
         animaux.put("lion", new Lion("Lion", "Carnivore", 4.0, "Mâle", "Marche"));
-        // Ajoute d'autres animaux ici si nécessaire
+
     }
 
     private static void gererZoo() {

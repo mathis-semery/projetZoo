@@ -1,6 +1,6 @@
 package Entite;
 
-public class Animaux {
+public abstract class Animaux {
     private String nom;
     private String type;
     private Double age;
@@ -34,4 +34,13 @@ public class Animaux {
     public String getDeplacement() {
         return deplacement;
     }
+    public abstract void manger();
+
+public abstract void Sedeplacer();
+
+public abstract void bruit();
+
 }
+
+
+

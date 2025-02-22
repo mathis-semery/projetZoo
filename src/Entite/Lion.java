@@ -50,5 +50,26 @@ public class Lion extends Animaux {
                 "  ~~`-..._)))(((.'     Felix Lee \n");
 
     }
-
+    public void manger(){
+        System.out.println("le lion mange de la viande");
+        System.out.println("   \\\\|\\\\||\n" +
+                "  -' ||||/\n" +
+                " /7   |||||/\n" +
+                " /    |||||||/`-.____________\n" +
+                " \\\\-' |||||||||               `-._\n" +
+                "  -|||||||||||               |` -`.\\  \n" +
+                "    ||||||               \\\\   |   `\\\\\\\\\n" +
+                "     |||||\\\\  \\\\______...---\\\\_  \\\\    \\\\\\\\\n" +
+                "        |  \\\\  \\\\           | \\\\  |    ``-.__--.\n" +
+                "        |  |\\\\  \\\\         / / | |       ``---'\n" +
+                "      _/  /_/  /      __/ / _| |\n" +
+                "     (,__/(,__/      (,__/ (,__/\n" +
+                "         \uD83C\uDF56\n");
+    }
+    public void Sedeplacer() {
+        System.out.println("le lion marche et court ");
+    }
+    public void bruit() {
+    System.out.println("le lion rugit");
+    }
 }
