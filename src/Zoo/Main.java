@@ -1,36 +1,56 @@
 package Zoo;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 import Entite.Lion;
 
 public class Main {
+    private static Scanner clavier = new Scanner(System.in);
+    private static Map<String, Lion> animaux = new HashMap<>();// connecte par pair une clé en string avecc une valeur objet donc les animaux
+
     public static void main(String[] args) {
+        initialiserAnimaux();
+
         System.out.println("Bienvenue au zoo !");
-        System.out.println("Souhaitez-vous gérer le Zoo ou le visiter ?  gérer / visiter / partir ");
+        while (true) {
+            System.out.println("Souhaitez-vous gérer le Zoo ou le visiter ? (gérer / visiter / partir)");
+            String action1 = clavier.nextLine().trim().toLowerCase();
 
-        Scanner clavier = new Scanner(System.in);
-        String action1 = clavier.nextLine().trim();
-
-        if (action1.equalsIgnoreCase("gérer")) {
-            System.out.println("Gestion du zoo en cours...");
-
-        } else if (action1.equalsIgnoreCase("visiter")) {
-            System.out.println("Quel animal souhaitez-vous observer ?");
-            String actionV = clavier.nextLine().trim();
-
-            if (actionV.equalsIgnoreCase("le lion")) {
-                Lion lion1 = new Lion("Lion", "Carnivore", 4.0, "Mâle", "Marche");
-                lion1.afficherLion();
-            } else {
-                System.out.println("Cet animal n'est pas disponible.");
+            switch (action1) {
+                case "gérer":
+                    gererZoo();
+                    break;
+                case "visiter":
+                    visiterZoo();
+                    break;
+                case "partir":
+                    System.out.println("Merci de votre visite !");
+                    return;
+                default:
+                    System.out.println("Option invalide. Veuillez choisir parmi : gérer / visiter / partir.");
             }
-
-        } else if (action1.equalsIgnoreCase("partir")) {
-            System.out.println("Merci de votre visite !");
-        } else {
-            System.out.println("Option invalide. Veuillez choisir parmi : gérer / visiter / partir.");
         }
+    }
 
-        clavier.close();
+    private static void initialiserAnimaux() {
+        animaux.put("lion", new Lion("Lion", "Carnivore", 4.0, "Mâle", "Marche"));
+        // Ajoute d'autres animaux ici si nécessaire
+    }
+
+    private static void gererZoo() {
+        System.out.println("Gestion du zoo en cours...");
+
+    }
+
+    private static void visiterZoo() {
+        System.out.println("Quel animal souhaitez-vous observer ?");
+        String nomAnimal = clavier.nextLine().trim().toLowerCase();
+
+        if (animaux.containsKey(nomAnimal)) {
+            animaux.get(nomAnimal).afficherLion();
+        } else {
+            System.out.println("Cet animal n'est pas disponible.");
+        }
     }
 }
