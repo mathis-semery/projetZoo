@@ -1,13 +1,18 @@
 package Zoo;
 
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+
+import Entite.Animaux;
 import Entite.Lion;
+import Entite.Personnel;
+import Entite.Soigneur;
 
 public class Main {
     private static Scanner clavier = new Scanner(System.in);
-    private static Map<String, Lion> animaux = new HashMap<>();// connecte par pair une clé en string avecc une valeur objet donc les animaux
+    private static Map<String, Lion> animaux = new HashMap<>();
 
     public static void main(String[] args) {
         initialiserAnimaux();
@@ -39,7 +44,25 @@ public class Main {
     }
 
     private static void gererZoo() {
-        System.out.println("Gestion du zoo en cours...");
+        System.out.println("gestion du zoo en cours ......");
+        System.out.println("voulez vous faire appel au soigneur pour diagnostiquer les animaux !");
+        String choix = clavier.nextLine().trim().toLowerCase();
+
+        if (choix.equals("oui")) {
+
+            Animaux animal = animaux.get("lion");
+
+            if (animal != null) {
+                Soigneur soigneur = new Soigneur("Paul", "Dena", 20 , "Lion");
+                soigneur.diagnostiquer(animal);
+            } else {
+                System.out.println("Le lion n'est pas disponible dans le zoo.");
+            }
+        } else if (choix.equals("plus tard")) {
+            System.out.println("Pas de soucis, n'oubliez pas de prendre soin des animaux !");
+        } else {
+            System.out.println("Option invalide. Veuillez répondre par 'oui' ou 'plus tard'.");
+        }
 
     }
 
