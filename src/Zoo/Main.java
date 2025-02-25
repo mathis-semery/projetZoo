@@ -1,8 +1,7 @@
 package Zoo;
 
 
-import java.util.HashMap;
-import java.util.Map;
+
 import java.util.Scanner;
 
 import Entite.Animaux;
@@ -10,12 +9,16 @@ import Entite.Lion;
 import Entite.Personnel;
 import Entite.Soigneur;
 
+import static Zoo.GestionZoo.getAnimaux;
+
 public class Main {
     private static Scanner clavier = new Scanner(System.in);
-    private static Map<String, Lion> animaux = new HashMap<>();
+
 
     public static void main(String[] args) {
-        initialiserAnimaux();
+
+        GestionZoo.initialiserAnimaux();
+        GestionZoo.initialiserPersonnel();
 
         System.out.println("Bienvenue au zoo !");
         while (true) {
@@ -38,10 +41,6 @@ public class Main {
         }
     }
 
-    private static void initialiserAnimaux() {
-        animaux.put("lion", new Lion("Lion", "Carnivore", 4.0, "Mâle", "Marche"));
-
-    }
 
     private static void gererZoo() {
         System.out.println("gestion du zoo en cours ......");
@@ -50,7 +49,7 @@ public class Main {
 
         if (choix.equals("oui")) {
 
-            Animaux animal = animaux.get("lion");
+            Animaux animal = GestionZoo.getAnimaux().get("lion");
 
             if (animal != null) {
                 Soigneur soigneur = new Soigneur("Paul", "Dena", 20 , "Lion");
@@ -67,11 +66,12 @@ public class Main {
     }
 
     private static void visiterZoo() {
+        Animaux animal = GestionZoo.getAnimaux().get("lion");
         System.out.println("Quel animal souhaitez-vous observer ?");
         String nomAnimal = clavier.nextLine().trim().toLowerCase();
 
-        if (animaux.containsKey(nomAnimal)) {
-            animaux.get(nomAnimal).afficherLion();
+        if (getAnimaux().containsKey(nomAnimal)) {
+            getAnimaux().get(nomAnimal).afficherLion();
         } else {
             System.out.println("Cet animal n'est pas disponible.");
         }
