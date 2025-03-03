@@ -12,11 +12,13 @@ public class GestionZoo {
     private static Map<String, Visiteur> visiteur = new HashMap<>();
 
     public static double soldeZoo = 1000.0;
+    public static double  prixbilletEnfant = 8;
+    public static double prixbilletAdulte = 15;
 
     static void initialiserAnimaux() {
         animaux.put("lion", new Lion("Lion", "Carnivore", 4.0, "Mâle", "Marche"));
         animaux.put("Serpent", new Serpent("Serpent", "carnivore", 6.0, "Femelle", "Rampe"));
-        animaux.put("oiseau", new Lion("oiseau", "herbivore", 2.0, "Mâle", "voler"));
+        animaux.put("oiseau", new Oiseau("oiseau", "herbivore", 2.0, "Mâle", "voler"));
     }
 
     static void initialiserPersonnel() {
@@ -48,15 +50,17 @@ public class GestionZoo {
         return enclos;
     }
 
-    public static void ajouterAnimal(String clé, Animaux animal) {
-        animaux.put(clé, animal);
+    public static void ajouterAnimal(String cle, Animaux animal) {
+        animaux.put(cle, animal);
         System.out.println(" votre animal à bien été ajouter au zoo ");
     }
-    
+
     public static void afficherTousLesAnimaux() {
         for (Animaux animal : GestionZoo.getAnimaux().values()) {
             System.out.println(animal);
         }
-
+    }
+    public static void afficherSolde(){
+        System.out.println(soldeZoo);
     }
 }

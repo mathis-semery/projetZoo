@@ -25,12 +25,22 @@ public class GererZoo {
                     break;
                 case "partir":
                     System.out.println("Merci de votre visite !");
-                case "ajouter":
+                case "afficheranimaux":
+                    GestionZoo.afficherTousLesAnimaux();
+                    break;
+                case "modifprixbillet":
+                    modifPrixBillet();
+                    break;
+                case "affichersolde":
+                    GestionZoo.afficherSolde();
+                    break;
+                case "ajouteranimal":
                     ajouterAnimaux();
                     return;
                 default:
                     System.out.println("Option invalide. Veuillez choisir parmi : gérer / visiter / partir.");
             }
+
 
 
         }
@@ -67,7 +77,7 @@ public class GererZoo {
             String type = "Carnivore" ;
             String deplacement = "Marche";
             animal =   new Lion(nom, type, age ,sexe, deplacement);
-        }else if (espece.equals("Serpent")){
+        }else if (espece.equals("serpent")){
             String type = "Carnivore" ;
             String deplacement = "Rampe";
             animal = new Serpent(nom, type, age, sexe, deplacement);
@@ -79,15 +89,30 @@ public class GererZoo {
 
         if (animal != null) {
 
-            String clé = clavier.nextLine().trim().toLowerCase();
+            String cle = clavier.nextLine().trim().toLowerCase();
 
-            GestionZoo.ajouterAnimal(clé, animal);
-            System.out.println(animal.getNom() + " a bien été ajouté au zoo avec la clé " + clé);
+            GestionZoo.ajouterAnimal(cle, animal);
+            System.out.println(animal.getNom() + " a bien été ajouté au zoo avec la clé " + cle);
         } else {
             System.out.println("Espèce inconnue, l'animal n'a pas pu être ajouté.");
         }
         GestionZoo.afficherTousLesAnimaux();
     }
+
+
+
+
+    public static void modifPrixBillet() {
+        System.out.print("Nouveau prix du billet enfant : ");
+        GestionZoo.prixbilletEnfant = clavier.nextDouble();
+
+        System.out.print("Nouveau prix du billet adulte : ");
+        GestionZoo.prixbilletAdulte = clavier.nextDouble();
+
+        System.out.println("Les nouveaux prix ont été mis à jour !");
+        System.out.println("les Prix enfant sont :" + GestionZoo.prixbilletEnfant + "les Prix Adultes sont : " + GestionZoo.prixbilletAdulte );
+    }
+
 }
 
 

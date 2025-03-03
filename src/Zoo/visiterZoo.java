@@ -39,17 +39,17 @@ protected static void visiterZoo() {
 
 
 
-
 static void  prixZoo () {
+
     System.out.println("Quel âge avez vous");
     String ageVisiteurStr = clavier.nextLine().trim();
     double ageVisiteur = Double.parseDouble(ageVisiteurStr);
     if (ageVisiteur < 16) {
-        System.out.println("vous devez payez la somme de 8 euros");
-        GestionZoo.soldeZoo = GestionZoo.soldeZoo + 8.00;
+        System.out.println("vous devez payez la somme de" + GestionZoo.prixbilletEnfant + " euros");
+        GestionZoo.soldeZoo = GestionZoo.soldeZoo + GestionZoo.prixbilletEnfant;
     }else
-        System.out.println("vous devez payez la somme de 15 euros");
-    GestionZoo.soldeZoo = GestionZoo.soldeZoo + 15;
+        System.out.println("vous devez payez la somme de " + GestionZoo.prixbilletAdulte + " euros");
+    GestionZoo.soldeZoo = GestionZoo.soldeZoo + GestionZoo.prixbilletAdulte;
 
 }
 }
