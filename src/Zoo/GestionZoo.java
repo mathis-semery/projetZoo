@@ -7,20 +7,21 @@ import java.util.Map;
 
 public class GestionZoo {
     private static Map<String, Animaux> animaux = new HashMap<>();
-    private  static Map<String, Soigneur> personnel = new HashMap<>();
+    private static Map<String, Soigneur> personnel = new HashMap<>();
     private static Map<String, Enclos> enclos = new HashMap<>();
+    private static Map<String, Visiteur> visiteur = new HashMap<>();
 
+    public static double soldeZoo = 1000.0;
 
-
-     static void initialiserAnimaux() {
+    static void initialiserAnimaux() {
         animaux.put("lion", new Lion("Lion", "Carnivore", 4.0, "Mâle", "Marche"));
-        animaux.put("Serpent", new Serpent("Serpent", "carnivore" , 6.0 , "Femelle", "Ramper") );
-         animaux.put("oiseau", new Lion("oiseau", "herbivore", 2.0, "Mâle", "voler"));
+        animaux.put("Serpent", new Serpent("Serpent", "carnivore", 6.0, "Femelle", "Rampe"));
+        animaux.put("oiseau", new Lion("oiseau", "herbivore", 2.0, "Mâle", "voler"));
     }
 
-     static void initialiserPersonnel() {
+    static void initialiserPersonnel() {
 
-         personnel.put("Soigneur1", new Soigneur("Dena" , "Paul" , 20 , "Lion" ));
+        personnel.put("Soigneur1", new Soigneur("Dena", "Paul", 20, "Lion"));
     }
 
     static void initialiserEnclos() {
@@ -31,6 +32,9 @@ public class GestionZoo {
 
     }
 
+    static void initialiserVisiteur() {
+        visiteur.put("Visiteur1", new Visiteur("Semery", "Mathis", 18));
+    }
 
     public static Map<String, Soigneur> getPersonnel() {
         return personnel;
@@ -39,8 +43,20 @@ public class GestionZoo {
     public static Map<String, Animaux> getAnimaux() {
         return animaux;
     }
+
     public static Map<String, Enclos> getEnclos() {
         return enclos;
     }
-}
 
+    public static void ajouterAnimal(String clé, Animaux animal) {
+        animaux.put(clé, animal);
+        System.out.println(" votre animal à bien été ajouter au zoo ");
+    }
+    
+    public static void afficherTousLesAnimaux() {
+        for (Animaux animal : GestionZoo.getAnimaux().values()) {
+            System.out.println(animal);
+        }
+
+    }
+}

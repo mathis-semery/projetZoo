@@ -1,7 +1,7 @@
 package Entite;
 
 public class Oiseau extends Animaux {
-    public Oiseau(String nom, String type, Double age, String sexe, String deplacement) {
+    public Oiseau(String nom, String type, double age, String sexe, String deplacement) {
         super(nom, type, age, sexe, deplacement);
     }
 

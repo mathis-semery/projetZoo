@@ -11,7 +11,12 @@ import java.util.Scanner;
 public class visiterZoo {
     private static Scanner clavier = new Scanner(System.in);
 
+
 protected static void visiterZoo() {
+    System.out.println("vous devez payer votre billet d'entrer .");
+     prixZoo();
+
+
 
     System.out.println("Quel animal souhaitez-vous observer ?");
     String nomAnimal = clavier.nextLine().trim().toLowerCase();
@@ -23,4 +28,28 @@ protected static void visiterZoo() {
     } else {
         System.out.println("Cet animal n'est pas disponible.");
     }
-}}
+}
+
+
+
+
+
+
+
+
+
+
+
+static void  prixZoo () {
+    System.out.println("Quel âge avez vous");
+    String ageVisiteurStr = clavier.nextLine().trim();
+    double ageVisiteur = Double.parseDouble(ageVisiteurStr);
+    if (ageVisiteur < 16) {
+        System.out.println("vous devez payez la somme de 8 euros");
+        GestionZoo.soldeZoo = GestionZoo.soldeZoo + 8.00;
+    }else
+        System.out.println("vous devez payez la somme de 15 euros");
+    GestionZoo.soldeZoo = GestionZoo.soldeZoo + 15;
+
+}
+}

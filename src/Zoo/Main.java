@@ -20,6 +20,7 @@ public class Main {
         GestionZoo.initialiserAnimaux();
         GestionZoo.initialiserPersonnel();
         GestionZoo.initialiserEnclos();
+        GestionZoo.initialiserVisiteur();
 
         System.out.println("Bienvenue au zoo !");
         while (true) {

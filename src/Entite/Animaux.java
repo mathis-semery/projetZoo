@@ -47,4 +47,8 @@ public abstract class Animaux {
     public abstract void manger();
     public abstract void Sedeplacer();
     public abstract void bruit();
+
+    public String toString() {
+        return "Nom: " + nom + ", type: " + type + ", Âge: " + age + ", Sexe: " + sexe +  ", Déplacement: " + deplacement;
+    }
 }
