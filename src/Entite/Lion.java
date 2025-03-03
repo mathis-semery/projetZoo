@@ -6,7 +6,7 @@ public class Lion extends Animaux {
 
     }
 
-    public void afficherLion() {
+    public void afficher() {
         System.out.println("Animal : " + getNom());
         System.out.println("Régime alimentaire : " + getType());
         System.out.println("Âge : " + getAge() + " ans");
