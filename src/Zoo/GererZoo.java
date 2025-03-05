@@ -4,6 +4,7 @@ import Entite.Animaux;
 import Entite.Lion;
 import Entite.Oiseau;
 import Entite.Serpent;
+import Entite.Enclos;
 
 import java.util.Scanner;
 
@@ -34,13 +35,15 @@ public class GererZoo {
                 case "affichersolde":
                     GestionZoo.afficherSolde();
                     break;
+                case "ajouterenclos":
+                    GestionZoo.ajouterEnclo();
+                    break;
                 case "ajouteranimal":
                     ajouterAnimaux();
                     return;
                 default:
                     System.out.println("Option invalide. Veuillez choisir parmi : gérer / visiter / partir.");
             }
-
 
 
         }
@@ -53,6 +56,7 @@ public class GererZoo {
         System.out.println("Vous avez choisi d'ajouter un " + espece);
         return espece;
     }
+
     public static void ajouterAnimaux() {
 
         String espece = especeAnimaux();
@@ -71,20 +75,20 @@ public class GererZoo {
         double age = clavier.nextDouble();
 
 
-        Animaux animal = null ;
+        Animaux animal = null;
 
-        if (espece.equals("lion")){
-            String type = "Carnivore" ;
+        if (espece.equals("lion")) {
+            String type = "Carnivore";
             String deplacement = "Marche";
-            animal =   new Lion(nom, type, age ,sexe, deplacement);
-        }else if (espece.equals("serpent")){
-            String type = "Carnivore" ;
+            animal = new Lion(nom, type, age, sexe, deplacement);
+        } else if (espece.equals("serpent")) {
+            String type = "Carnivore";
             String deplacement = "Rampe";
             animal = new Serpent(nom, type, age, sexe, deplacement);
-        }else if (espece.equals("oiseau")){
-            String type = "herbivore" ;
+        } else if (espece.equals("oiseau")) {
+            String type = "herbivore";
             String deplacement = "voler";
-            animal = new Oiseau( nom , type, age, sexe, deplacement);
+            animal = new Oiseau(nom, type, age, sexe, deplacement);
         }
 
         if (animal != null) {
@@ -99,6 +103,31 @@ public class GererZoo {
         GestionZoo.afficherTousLesAnimaux();
     }
 
+    public static void ajouterEnclos() {
+        System.out.println("vous ajoutez ici un enclos");
+
+        System.out.print("Entrez l'ID de l'enclos : ");
+        String idEnclos = clavier.nextLine().trim().toLowerCase();
+
+        System.out.print("Entrez le type d'enclos (ex: Savane, Jungle, Volière) : ");
+        String capacite = clavier.nextLine().trim().toLowerCase();
+
+        System.out.print("Quelle est la superficie de l'enclos en m² : ");
+        double superficie = clavier.nextDouble();
+
+        clavier.nextLine();
+
+        Enclos enclo = new Enclos(idEnclos, capacite, superficie);
+
+        if (enclo != null) {
+            String cle = clavier.nextLine().trim().toLowerCase();
+            GestionZoo.ajouterEnclo(cle, enclo);
+            System.out.println("L'enclos " + enclo.getIdEnclos() + " a bien été ajouté au zoo avec la clé " + cle);
+        } else {
+            System.out.println("Type d'enclos inconnu, l'enclos n'a pas pu être ajouté.");
+        }
+        GestionZoo.afficherTousLesEnclos();
+    }
 
 
 
@@ -110,11 +139,11 @@ public class GererZoo {
         GestionZoo.prixbilletAdulte = clavier.nextDouble();
 
         System.out.println("Les nouveaux prix ont été mis à jour !");
-        System.out.println("les Prix enfant sont :" + GestionZoo.prixbilletEnfant + "les Prix Adultes sont : " + GestionZoo.prixbilletAdulte );
+        System.out.println("les Prix enfant sont :" + GestionZoo.prixbilletEnfant + "les Prix Adultes sont : " + GestionZoo.prixbilletAdulte);
     }
 
-}
 
+}
 
 
 

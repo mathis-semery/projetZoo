@@ -2,12 +2,12 @@ package Entite;
 
 public class Enclos {
     private String idEnclos;
-    private String type;
+    private String capacite;
     private double superficie;
 
-    public Enclos(String idEnclos, String type, double superficie) {
+    public Enclos(String idEnclos, String capacite, double superficie) {
         this.idEnclos = idEnclos;
-        this.type = type;
+        this.capacite = capacite;
         this.superficie = superficie;
     }
 
@@ -15,8 +15,8 @@ public class Enclos {
         return idEnclos;
     }
 
-    public String getType() {
-        return type;
+    public String geCapacite() {
+        return capacite;
     }
 
     public double getSuperficie() {

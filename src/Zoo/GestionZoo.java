@@ -54,13 +54,23 @@ public class GestionZoo {
         animaux.put(cle, animal);
         System.out.println(" votre animal à bien été ajouter au zoo ");
     }
+    public static void ajouterEnclo(String cle, Enclos enclo) {
+        enclos.put(cle, enclo);
+        System.out.println(" votre animal à bien été ajouter au zoo ");
+    }
 
     public static void afficherTousLesAnimaux() {
         for (Animaux animal : GestionZoo.getAnimaux().values()) {
             System.out.println(animal);
         }
     }
-    public static void afficherSolde(){
-        System.out.println(soldeZoo);
-    }
+        public static void afficherTousLesEnclos () {
+            for (Enclos enclos : GestionZoo.getEnclos().values()) {
+                System.out.println(enclos);
+            }
+        }
+        public static void afficherSolde () {
+            System.out.println(soldeZoo);
+        }
+    
 }
