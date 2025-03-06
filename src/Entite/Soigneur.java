@@ -11,6 +11,8 @@ public class Soigneur extends Personnel {
     }
 
     public void diagnostiquer(Animaux animal) {
+        System.out.println(" les soigneurs diagnostique tout les animaux du zoo ");
+
 
         if (!animal.getClass().getSimpleName().equalsIgnoreCase(specialite)) {
             System.out.println(getNom() + " ne peut pas diagnostiquer cet animal !");

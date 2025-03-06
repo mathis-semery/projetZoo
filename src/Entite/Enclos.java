@@ -1,9 +1,13 @@
 package Entite;
 
 public class Enclos {
+
     private String idEnclos;
     private int capacite;
     private double superficie;
+    private int salete ;
+
+
 
     public int getCapacite() {
         return capacite;
@@ -11,11 +15,12 @@ public class Enclos {
 
     private String typeAnimal;
 
-    public Enclos(String idEnclos, int capacite, double superficie , String  typeAnimal) {
+    public Enclos(String idEnclos, int capacite, double superficie , String  typeAnimal , int salete) {
         this.idEnclos = idEnclos;
         this.capacite = capacite;
         this.superficie = superficie;
         this.typeAnimal = typeAnimal;
+        this.salete = 0;
     }
 
     public String getIdEnclos() {
@@ -41,6 +46,18 @@ public class Enclos {
                 ", superficie=" + superficie + " m²" +
                 ", typeAnimal='" + typeAnimal + '\'' +
                 '}';
+    }
+
+    public int getSalete() {
+        return salete;
+    }
+    public void ajoutSalete() {
+        this.salete += 1;
+
+    }
+    public void nettoyer() {
+        this.salete = 0;
+        System.out.println( " l'enclos a été nettoyé. Saleté ");
     }
 
 

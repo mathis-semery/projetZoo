@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GestionZoo {
+
     private static Map<String, Animaux> animaux = new HashMap<>();
     private static Map<String, Soigneur> personnel = new HashMap<>();
     private static Map<String, Enclos> enclos = new HashMap<>();
@@ -34,14 +35,58 @@ public class GestionZoo {
     static void initialiserPersonnel() {
 
         personnel.put("Soigneur1", new Soigneur("Dena", "Paul", 20, "Lion"));
+        personnel.put("Soigneur2", new Soigneur("Semery", "Mathis", 20, "Serpent"));
+        personnel.put("Soigneur3", new Soigneur("Cole" , "Palmer" , 22 , "oiseau"));
     }
 
     static void initialiserEnclos() {
-        enclos.put("Enclos1", new Enclos("Enclos1", 6, 10.0 , "lion"));
-        enclos.put("Enclos2", new Enclos("Enclos2", 8, 10.0 , "serpent"));
-        enclos.put("Enclos3", new Enclos("Enclos3", 10, 10.0 , "oiseau"));
+        enclos.put("Enclos1", new Enclos("Enclos1", 6, 10.0 , "lion" , 0));
+        enclos.put("Enclos2", new Enclos("Enclos2", 8, 10.0 , "serpent" , 0));
+        enclos.put("Enclos3", new Enclos("Enclos3", 10, 10.0 , "oiseau" , 0));
 
 
+    }
+    private long temps;
+    private int jour;
+
+    public void demarrerSimulation() {
+        long tempsDebut = System.currentTimeMillis(); // miiliseconcd
+        long tempsActuel;
+        long tempsEcoule;
+
+        while (true) {
+            tempsActuel = System.currentTimeMillis();
+            tempsEcoule = (tempsActuel - tempsDebut) / 1000;
+jour = 0;
+
+            if (tempsEcoule > temps) { // chaque seconde
+                temps = tempsEcoule;
+
+
+
+                if (temps % 15 == 0) { // 15 secondes
+                    jour++;
+                    System.out.println("24 h se sont écoulé : Jour " + jour);
+                }
+                if( jour % 2 == 0) {
+                    for (Enclos enclos : enclos.values()) {
+                        enclos.ajoutSalete();
+                    }
+                    for (Enclos enclos : enclos.values()) {
+                        if (enclos.getSalete() > 5) {
+                            enclos.nettoyer();
+                        }
+                    }
+                }
+            }
+
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            break;//sa marchait presque
+        }
     }
 
     static void initialiserVisiteur() {
@@ -115,4 +160,7 @@ public class GestionZoo {
             System.out.println(visiteurr);
         }
     }
+
+
 }
+

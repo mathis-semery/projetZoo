@@ -7,6 +7,7 @@ import Entite.Serpent;
 import Entite.Enclos;
 import Entite.*;
 
+import java.util.Map;
 import java.util.Scanner;
 
 public class GererZoo {
@@ -26,6 +27,7 @@ public class GererZoo {
             System.out.println("8. Ajouter un soigneur");
             System.out.println("9. Ajouter un animal à un enclos");
             System.out.println("10. Ajouter un animal");
+            System.out.println("11. Entretenir la santé des Animaux ");
             System.out.print("Choisissez une option (1-10) : ");
 
             int action1 = clavier.nextInt();
@@ -61,6 +63,9 @@ public class GererZoo {
                     break;
                 case 10:
                     ajouterAnimaux();
+                    break;
+                case 11:
+                    diagnostiquerTousLesAnimaux(GestionZoo.getAnimaux() , GestionZoo.getPersonnel());
                     break;
                 default:
                     System.out.println("Option invalide. Veuillez choisir parmi les options disponibles (1-10).");
@@ -139,8 +144,9 @@ public class GererZoo {
         String typeAnimal = clavier.nextLine().trim().toLowerCase();
 
         Enclos enclo = null;
+        int salete = 0;
 
-        enclo = new Enclos(idEnclos, capacite, superficie , typeAnimal);
+        enclo = new Enclos(idEnclos, capacite, superficie , typeAnimal , salete );
 
         if (enclo != null) {
             String cle = clavier.nextLine().trim().toLowerCase();
@@ -231,8 +237,29 @@ public class GererZoo {
                 System.out.println("Animal : " + nomAnimal + " -> Enclos : " + enclosObj.getIdEnclos() + ", Capacite : " + enclosObj.getCapacite() + ", Superficie : " + enclosObj.getSuperficie() + "m²");
             }
         }
-    }
 
+    }
+    public static void diagnostiquerTousLesAnimaux(Map<String, Animaux> animauxMap, Map<String, Soigneur> personnel) {
+        for (Animaux animal : animauxMap.values()) {
+            String espece = animal.getClass().getSimpleName();
+
+            Soigneur soigneurTrouve = null;
+
+
+            for (Soigneur soigneur : personnel.values()) {
+                if (soigneur.getSpecialite().equalsIgnoreCase(espece)) {
+                    soigneurTrouve = soigneur;
+                    break;
+                }
+            }
+
+            if (soigneurTrouve != null) {
+                soigneurTrouve.diagnostiquer(animal);
+            } else {
+                System.out.println("Aucun soigneur n'est spécialisé pour s'occuper d'un " + espece + " !");
+            }
+        }
+    }
 
 }
 

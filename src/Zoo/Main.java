@@ -21,6 +21,16 @@ public class Main {
         GestionZoo.initialiserPersonnel();
         GestionZoo.initialiserEnclos();
         GestionZoo.initialiserVisiteur();
+        GestionZoo zoo = new GestionZoo();
+        Thread simulationThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                zoo.demarrerSimulation();
+            }
+        });
+
+
+        simulationThread.start();
 
         System.out.println("Bienvenue au zoo !");
         while (true) {
