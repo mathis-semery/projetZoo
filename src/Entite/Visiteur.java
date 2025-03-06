@@ -12,5 +12,13 @@ public class Visiteur {
         this.age = age;
 
     }
+    @Override
+    public String toString() {
+        return "Visiteur{" +
+                "nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", age=" + age +
+                '}';
+    }
 
 }

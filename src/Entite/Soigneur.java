@@ -41,4 +41,15 @@ public class Soigneur extends Personnel {
     public String getSpecialite() {
         return specialite;
     }
+
+    @Override
+    public String toString() {
+        return "Soigneur{" +
+                "nom='" + getNom() + '\'' +
+                ", prenom='" + getPrenom() + '\'' +
+                ", age=" + getAge() +
+                ", specialite='" + specialite + '\'' +
+                '}';
+    }
+
 }
